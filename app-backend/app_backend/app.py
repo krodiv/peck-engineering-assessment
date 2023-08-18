@@ -7,7 +7,4 @@ def hello():
     return 'Hello, World! We are Live!'
 
 if __name__ == "__main__":
-    app.run(debug=True)
-#
-# while True:
-#     print("hello")
+    app.run(debug=True) # this is a development server run not a production level deployment

@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - db:/var/lib/postgresql/data
+    network_mode: host
+    # default port 5432 is used
+
+  backend_app:
+    image: backend_application
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    network_mode: host
+    # default port 5000 is used
+
+volumes:
+  db:
+    driver: local
