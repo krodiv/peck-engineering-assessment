@@ -6,6 +6,7 @@ Work in progress:
 - add more front end elements to get non functional food institutions
 - add a production grade webserver rather than local bring up
 - add a terraform file for deployment
+- add typing for more clarity of data type and its transfter
 
 #Starting the project
 - cd into /app-backend
