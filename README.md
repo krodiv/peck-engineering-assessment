@@ -1,8 +1,11 @@
 # peck-engineering-assessment
 My attempt at completing the Peck Engineering Assessment.
 Work in progress:
-- Need to add functionality to food_facility class for seeding db of data and executing functionality
-- Need to add tests to ensure connection to db and application functionality
+- more sorting functions to FoodFacilityList to allow more valuable info
+- tests to ensure database connection management is stable
+- add more front end elements to get non functional food institutions
+- add a production grade webserver rather than local bring up
+- add a terraform file for deployment
 
 #Starting the project
 - cd into /app-backend
