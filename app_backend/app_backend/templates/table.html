@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, inital-scale=1.0"/>
+        <title>Active Food Trucks</title>
+        <link rel="stylesheet" href="/static/styles.css"/>
+    </head>
+    <body>
+        <table class="table">
+            <tr class="table__header">
+                {% for header in headings %}
+                <th class="table__cell">{{ header }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in data %}
+            <tr class="table__row">
+                <td class="table__cell">{{ row["applicant"] }}</td>
+                <td class="table__cell">{{ row["address"] }}</td>
+                <td class="table__cell">{{ row["permit"] }}</td>
+                <td class="table__cell">{{ row["status"] }}</td>
+                <td class="table__cell">{{ row["food_items"] }}</td>
+                <td class="table__cell">{{ row["latitude"] }}</td>
+                <td class="table__cell">{{ row["longitude"] }}</td>
+                <td class="table__cell">{{ row["zip"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

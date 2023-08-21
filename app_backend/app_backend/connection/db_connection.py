@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy_utils import database_exists, create_database
 from app_backend.connection.local_settings import postgresql as settings
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, Float
+from sqlalchemy import Column, Integer, String, Float
 
 
 class DbConnection:
@@ -28,19 +28,30 @@ class DbConnection:
         session = sessionmaker(bind=self.get_engine())()
         return session
 
-# The below should go into a separate file for all declarative tables
+    def close_connection(self):
+        pass
 
+# The below should go into a separate file for all declarative tables models folder
 
+db_session = scoped_session(
+    sessionmaker(
+        autocommit=False,
+        autoflush=True,
+        bind=DbConnection().get_engine()
+    )
+)
 Base = declarative_base()
+Base.query = db_session.query_property()
 
 
 class FoodTruck(Base):
     __tablename__ = "food_truck"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    permit = Column(String, unique=True)
+    applicant = Column(String, nullable=False)
     address = Column(String)
-    permit_status = Column(Boolean)
+    status = Column(String)
     food_items = Column(String)
     latitude = Column(Float)
     longitude = Column(Float)

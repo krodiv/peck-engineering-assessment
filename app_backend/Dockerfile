@@ -1,7 +1,12 @@
 FROM python:3.10-slim as builder
 
 # pin version of poetry
-RUN pip install poetry==1.3.1
+RUN pip install poetry==1.4.0
+
+# add dependancies for psycopg2
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
 
 # poetry configuration for build
 ENV POETRY_NO_INTERACTION=1 \
